@@ -1,0 +1,117 @@
+h1{
+padding: 0px;
+margin: 0px;
+}
+body{
+	background: url(../img/ricepaper-black.jpg);
+	color: #FFF;
+	font-family: tahoma;
+	overflow-x: hidden;
+	font-family: 'Kite One', sans-serif;
+}
+#forms{
+	visibility: hidden;
+}
+.formHead{
+	border-bottom: 2px solid #CCC;
+	margin-bottom: 20px;
+	text-align: center;
+}
+table tr:last-child td:nth-child(2){
+	float: right;
+}
+#header{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	padding: 0px 5px;
+	height: 55px;
+	line-height: 60px;
+	background: #2b2927;
+	z-index: 2000;
+	opacity: 0.95;
+	font-family:  'Sancreek', cursive;
+}
+#header ul:nth-child(2){
+	float: right;
+	margin-right: 50px;
+}
+#header ul:nth-child(2) li{
+	font-family: 'Kite One', sans-serif;
+	display: inline-block;
+	margin: 0px 10px;
+}
+
+#header ul:nth-child(1){
+	position: fixed;
+	z-index: 2000;
+	width: 1000px;
+	height: 55px;
+	float: left;
+	font-family: 'Kite One', sans-serif;
+}
+#header ul:nth-child(1) li h1{
+	font-family: 'Sancreek', cursive;
+	font-size: 30px;
+	margin-right: 20px;
+}
+#header ul:nth-child(1) li{
+	display: inline-block;
+	padding:0px 15px;
+}
+#header ul:nth-child(1) li a{
+	color: #FFF;
+	text-decoration: none;
+}
+#header ul:nth-child(1) li a:hover{
+	color: #00a7f2;
+}
+#footer{
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	padding: 0px;
+	height: 25px;
+	line-height: 25px;
+	font-size: 14px;
+	background: #333;
+	z-index: 2000;
+	opacity: 0.95;
+	text-align: center;
+}
+#bar1, #bar2, #bar3{
+	display: none;
+}
+.centralContainer{
+	position: relative;
+	width: 900px;
+	margin: 0px auto;
+}
+
+.restaurantContainers{
+	width: 255px;
+	height: 400px;
+	display: inline-block;
+	background: #FFF;
+	margin: 0px 5px;
+	vertical-align: top;
+	padding: 10px;
+	margin: 10px;
+	color: #CCC;
+}
+.restaurantContainers img{
+	width: 255px;
+	border: 1px solid #CCC;
+}
+.restaurantContainers h4{
+	margin-top: 20px;
+	margin-left: 0px;
+}
+.classForIsolatingFooter{
+	height: 30px;
+	width: 900px;
+}
+#slideShow{
+	position: relative;
+	margin: 0px auto;
+}

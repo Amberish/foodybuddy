@@ -1,0 +1,392 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+@font-face {
+    font-family: "My Custom Font";
+}
+#headerContent{
+	padding: 10px 15px;
+	margin-top: -10px;
+	background: #EEE;
+	border-bottom: 2px solid;
+}
+
+#headerContent span{
+	display: inline-block;
+}
+
+#headerContent span:nth-child(2){
+	margin-top: 20px;
+	float: right;
+}
+
+#middleContent{
+	border-bottom: 2px solid #333;
+}
+
+#middleContent div{
+	display: inline-block;
+	vertical-align: top;
+}
+
+#leftPanel{
+	border-right: 2px solid #333;
+	border-radius: 0px 0px 30px 0px;
+	background: #555;
+	color: #FFF;
+	width: 170px;
+	height: 300px;
+}
+
+#leftPanel ul{
+	list-style: none;
+	margin-left: 0px;
+}
+
+#leftPanel ul li{
+	padding: 10px 0px;
+	border-bottom: 2px solid #333;
+	text-align: center;
+}
+
+#leftPanel ul li:hover{
+	box-shadow:inset 0px 0px 5px 2px #0CB5F4;
+	font-size: 18px;
+	background: #555;
+}
+
+#leftPanel ul a{
+	color:#FFF;
+}
+
+.active{
+	box-shadow:inset 0px 0px 5px 2px #0CB5F4;
+	font-size: 18px;
+	background: #555;
+}
+
+#rightPanel{
+	margin-left: -5px;
+	height: 400px;
+	border-left: 2px solid #333;
+	background: url(../img/food.png);/*-webkit-linear-gradient(#953a1a 30%, #ad7460 100%);*/
+	background-size: 100%;
+}
+
+#pageAfterHomeUrl{
+	background: #FFF;
+	margin-left: 40px;
+	padding: 20px;
+	border: 1px solid #AAA;
+	border-radius: 20px;
+}
+
+#previousBilling{
+	width: 80%;
+	margin-left:40px;
+}
+
+#currentBilling{	
+	width:60%;
+	margin-left: 40%;
+}
+
+#currentBilling table:nth-child(2){
+	padding: 10px;
+}
+
+#inlineIdAndImage{
+	width: 60%;
+	margin-left: 20%;
+}
+
+#inlineIdAndImage div:nth-child(2){
+	float: right;
+}
+
+#homeContent{
+	position: relative;
+	top: 40%;
+	left: 40%;
+	width: 224px;
+	margin: 0px auto;
+}
+
+#footerContent{
+	text-align: center;
+}
+/*Styling for 'fans' tab------------------------------------------------------------*/
+#fanSearchOptions{	
+	margin-top: 12%;
+	margin-left: 32%;
+	text-align: center;
+}
+
+#fanSearchOptions ul li{
+	list-style: none;
+	margin: 0px;
+	padding: 10px 20px;
+}
+
+#fanSearchOptions ul li a{
+	width: 250px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 18px;
+}
+
+#fanSearchOptions ul li:nth-child(1) span{
+	background: #0044cc;
+	display:none;
+	padding: 12px 8px 10px 8px;
+	border-radius: 0px 0px 5px 5px;
+	margin-top: 30px;
+}
+
+#searchAllFansContent{
+	margin: 20px;
+	height: 450px;
+	margin-left: 12%;
+}
+.fansPage{
+	display: inline-block;
+	vertical-align: top;
+}
+#fansLeftPanel{
+	padding: 10px 0px;
+	text-align: center;
+	font-family: tahoma;
+	margin: 0px 20px;
+	width: 180px;
+	height: 430px;
+	background: #FFF;
+	box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.3);
+}
+#fansLeftPanel select{
+	width: 150px;
+}
+#fansLeftPanel h4{
+	font-size: 16px;
+}
+#stripForAlphabeticalSearch{
+	padding: 0px 10px;
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid;
+	background: #FFF;
+}
+#resultContainer{
+	margin: 20px 0px;
+	width: 655px;
+	background: #FFF;
+	box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.3);
+}
+#resultContainer table{
+	margin: 40px 10px;
+}
+#resultContainer table tr td{
+	padding:20px 30px;
+	vertical-align: top;
+}
+#resultContainer table tr td:nth-child(2){
+	width: 400px;
+}
+#resultContainer table tr td:nth-child(3){
+	vertical-align: middle;
+}
+#accuAmt{
+	text-align: center;
+}
+#accuAmt table tr td{
+	padding: 2px 5px;
+	line-height: 20px;
+}
+#accuAmt table tr td:nth-child(2){
+	float: left;
+}
+
+.accuAmtAndDisc{
+	float: right;
+}
+
+/*Styling for 'make more fans'----------------------------------------------------------------*/
+#makeMoreFans{
+	position: relative;
+	top: 30%;
+	left: 34%;
+	width: 250px;
+	margin: 0px auto;
+	padding: 30px 20px;
+}
+#makeMoreFans ul{
+	margin: 0px;
+	list-style: none;
+}
+#makeMoreFans ul li{
+	padding: 5px 10px;
+	margin-left: 60px;
+	font-size: 17px
+}
+/*'select poster' styling------------------------------------*/
+#selectPosterContainer{
+	padding: 20px;
+	margin: 30px 0px;
+	margin-left: 18%;	
+	background:#FFF;
+	border: 1px solid #CCC;
+}
+#posterListContainer div{
+	width: 150px;
+	margin: 10px 10px;
+	text-align: center;
+}
+#posterListContainer div img{
+	width: 150px;
+	height: 200px;
+	border: 1px solid #CCC;
+	margin-bottom: 10px;
+}
+#fancyboxData{
+	width:800px;
+	height: 410px;
+}
+#fancyboxData div{
+	display: inline-block;
+	vertical-align: top;
+}
+#imgParent{
+	padding-right: 20px;
+	height: 410px;
+	border-right: 1px solid #CCC;
+}
+#imgContainer{
+	border:1px solid #CCC;
+}
+#contentContainer{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 300px;
+	height: 400px;
+}
+#settingsDiv{
+	margin-left: 20px;	
+	width: 450px;
+}
+#fancyboxData div table tr td{
+	padding: 5px 10px;
+}
+#fancyboxData div table tr td:nth-child(2){
+	width: 250px;
+	text-align: center;
+}
+#fancyboxData div table tr:nth-child(4) td:nth-child(1){
+	vertical-align: top;
+}
+#fancyboxData div table tr:nth-child(3) td{
+	height: 80px;
+}
+#h-slider{
+	margin-top: 5px;
+	width: 200px;
+}
+#titleText{
+	width: 200px;
+}
+#title{
+	font-family: Tahoma;
+	position:absolute; 
+	top:0px; 
+	left:0px;
+}
+#description{
+	font-family: Tahoma;
+	position:absolute; 
+	top:0px; 
+	left:0px;
+}
+.selectedElement{
+	border: 1px dashed #FFF;
+}
+/*-----------------------------------------------------------*/
+
+/*custom poster styling--------------------------------------*/
+#posterContainer{
+	padding: 20px;
+	border: 3px dashed #CCC;
+	border-radius: 5px;
+}
+#posterImage{
+	width: 800px;
+	height: 250px;
+	border: 1px solid #CCC;
+	color: #CCC;
+	background: #f8f9fa;
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+}
+#posterImage span{
+	position: relative;
+	top: 115px;
+}
+#customPoster{
+	margin-left: 12%;
+	margin-top: 20px;
+}
+#titleAndDesc label{
+	font-weight: 800px;
+}
+#titleAndDesc input{
+	width: 300px;
+} 
+#titleAndDesc textarea{
+	min-width: 840px;
+	max-width: 840px;
+	min-height: 200px;
+	max-height: 200px;
+}
+
+#previewImage{
+	width: 800px;
+	height: 250px;
+}
+#loadingImg{
+	margin-top: 20%;
+	margin-left: 35%;
+}
+#successMessage{
+	margin-top: 28%;
+	margin-left: 38%;
+}
+
+#createPosterContainer{
+	position: relative;
+	top: 30%;
+	left: 34%;
+	width: 280px;
+	margin: 0px auto;
+	padding: 30px 20px;
+}
+#createPosterContainer ul{
+	margin: 0px;
+	list-style: none;
+}
+#createPosterContainer ul li{
+	padding: 5px 10px;
+	margin-left: 30px;
+	font-size: 17px
+}
+/*-------------------------------------------------*/
+
+.stylingPagination{
+	color: orange;
+}
+#posterDesc{
+	min-width: 200px;
+	max-width: 200px;
+	min-height: 120px;
+	max-width: 120px;
+}

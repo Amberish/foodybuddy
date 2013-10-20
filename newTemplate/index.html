@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link href='http://fonts.googleapis.com/css?family=Kite+One' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Sancreek' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/coin-slider.css" />		
+
+		<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/parallax.min.js"></script>
+		<script type="text/javascript">
+		jQuery(document).ready(function($){
+			if($(window).width() < 900){
+				$('body').css('overflow-x' , 'scroll');
+			}
+			//Setting for adjusting screen look...
+			$('.innerBox').width($(window).width());
+			$('#slideShow').width($(window).width()*0.9).height($(window).height()*0.8);
+			$('#slideShow').height($(window).height()*0.8).css({'left' : ($(window).width() - $('#slideShow').width())/2, 'top' : ($(window).height() - $('#slideShow').height() + 20)/2});
+
+			$('#header').width($(window).width()+5);
+			$('#footer').width($(window).width()+15);
+			$('.centralContainer').css('top', $('#header').height() + 20);
+			var p = parallax;
+			p.add($("#bar1"));
+			p.add($("#bar2"));
+			p.add($("#bar3"));
+			p.add($("#bar4"));
+			p.add($("#bar5"));
+			p.add($("#bar6"));
+
+			p.background = $("body");
+			p.scaling = 0.3; //background moves 30% with the page
+
+			p.bar1.show();
+			p.bar2.hide();
+			p.bar3.hide();
+			p.bar4.hide();
+			p.bar5.hide();
+			p.bar6.hide();
+
+			$(document).keydown(function(e){
+				p.speed = 500;
+				p.easing = 'linear';
+				p.last = barLast(p);
+				p.next = barNext(p);
+				var keyCode = e.keyCode;
+				switch(keyCode){
+					case 37 ://for left
+							if(p.last !== p.bar6)
+								p.last.left();
+							break;
+
+					case 39 ://for top
+							if(p.next !== p.bar1)
+								p.next.right();
+							break;
+
+				}
+			});
+
+			$('#header a').click(function(){
+
+				var linkInOrder = [p.bar1, p.bar2, p.bar3, p.bar4, p.bar5, p.bar6];
+
+				//creatind a map for links and sections....
+				var mapLink = {
+					homePage : p.bar1,
+					restOffers : p.bar2,
+					discoOffers : p.bar3,
+					pubOffers : p.bar4,
+					sundayBrunch : p.bar5,
+					yaaronKaAdda : p.bar6	 
+				};
+				var linkClicked = $(this).attr('link-clicked');
+
+				var current = p.current;
+				var currentCount = linkInOrder.indexOf(current);
+
+				var next = mapLink[linkClicked];
+				var nextCount = linkInOrder.indexOf(next);
+				
+				if(Math.abs(currentCount - nextCount) > 1){
+					p.speed = 200;
+					p.easing = 'linear';
+				}else{
+					p.speed = 500;
+					p.easing  = 'linear';
+				}			
+				
+				if(currentCount < nextCount){											
+					recursiveIncrement(currentCount+1);					
+				}else if(currentCount > nextCount){
+					recursiveDecrement(currentCount-1);
+				}
+
+				//recursive function to move right multiple step...
+				function recursiveIncrement(count){
+					if( count == nextCount){
+						linkInOrder[count].right();
+					}else{
+						linkInOrder[count].right(function(){
+							recursiveIncrement(count+1);
+						});
+					}
+				}
+
+				//recursive function to move left multiple step...
+				function recursiveDecrement(count){
+					if( count == nextCount){
+						linkInOrder[count].left();
+					}else{
+						linkInOrder[count].left(function(){
+							recursiveDecrement(count-1);
+						});
+					}
+				}
+
+			});
+
+			function barLast(p){
+				var current = p.current;
+				var last;
+				if(current == p.bar1){
+					last = p.bar6;
+				}else if(current == p.bar2){
+					last = p.bar1;
+				}else if(current == p.bar3){
+					last = p.bar2;
+				}else if(current == p.bar4){
+					last = p.bar3;
+				}else if(current == p.bar5){
+					last = p.bar4;
+				}else if(current == p.bar6){
+					last = p.bar5;
+				}
+				return last;
+			}
+
+			function barNext(p){
+				var current = p.current;
+				var next;
+				if(current == p.bar1){
+					next = p.bar2;
+				}else if(current == p.bar2){
+					next = p.bar3;
+				}else if(current == p.bar3){
+					next = p.bar4;
+				}else if(current == p.bar4){
+					next = p.bar5;
+				}else if(current == p.bar5){
+					next = p.bar6;
+				}else if(current == p.bar6){
+					next = p.bar1;
+				}
+				return next;
+			}
+		});
+		</script>
+		<script type="text/javascript" src="js/script.js"></script>
+		<script type="text/javascript" src="js/coin-slider.min.js"></script>
+
+		<!--Fancybox ..................................................................-->
+		<script type="text/javascript" src="fancybox/jquery.fancybox.js"></script>
+		<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox.css">
+
+		<script type="text/javascript">
+		jQuery(document).ready(function(){
+			$('#login-btn').click(function(){
+				$.fancybox($('#loginForm').html(), {
+					helpers : {
+					  overlay : {
+					    css : { 'overflow' : 'hidden' }
+					  }
+					}
+				});
+			});
+			$('#signup-btn').click(function(){
+				$.fancybox($('#signupForm').html(), {
+					helpers : {
+					  overlay : {
+					    css : { 'overflow' : 'hidden' }
+					  }
+					}
+				});
+			});
+		});
+		
+		</script>
+		<!-- ........................................................................-->
+	</head>
+	<body>
+		<div id="forms">
+			<div id="signupForm">
+				<form>
+					<div class="formHead"><h2>Sign-Up</h2></div>
+					<table>
+						<tr>
+							<td>Username </td><td> : <input type="text" name="username" /></td>
+						</tr>
+						<tr>
+							<td>Full Name </td><td> : <input type="text" name="full-name" /></td>
+						</tr>
+						<tr>
+							<td>Email </td><td> : <input type="email" name="email" /></td>
+						</tr>
+						<tr>
+							<td>Password </td><td> : <input type="password" name="password" /></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td><td><input type="button" class="btn btn-success" value="Sign Up"/></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div id="loginForm">
+				<form>
+					<div class="formHead"><h2>Login</h2></div>
+					<table>
+						<tr>
+							<td>Username </td><td> : <input type="text" name="username" /></td>
+						</tr>
+						<tr>
+							<td>Password </td><td> : <input type="password" name="password" /></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td><td><input type="button" class="btn btn-primary" value="Sign In"/></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+		<div id="header">			
+			<ul>
+				<li id="brandName"><h1><a link-clicked="homePage" href="#">Foody Buddy</a></h1></li>
+				<li><input id="search" type="text" placeholder="search something.."></li>
+				<li><a link-clicked="restOffers" href="#">Restaurant</a></li>
+				<li><a link-clicked="discoOffers" href="#">Disco</a></li>
+				<li><a link-clicked="pubOffers" href="#">Pub</a></li>
+				<li><a link-clicked="sundayBrunch" href="#">Sunday Brunch</a></li>
+				<li><a link-clicked="yaaronKaAdda" href="#">Yaaron Ka Adda</a></li>
+			</ul>
+			<ul>
+				<li><input type="button" class="btn btn-primary account-btn" id="login-btn" value="Login"></li>
+				<li><input type="button" class="btn btn-success account-btn" id="signup-btn" value="Sign-Up"></li>
+			</ul>
+		</div>
+		<div id="main_container"> 
+			<div id="bar1">
+				<div id="slideShow"> 
+					  <div id="coin-slider"> <a href="#"><img src="img/slide1.jpg" width="1000" height="320" alt="" />
+			          <span>Some Text Goes Here</span></a>
+			           <a href="#"><img src="img/slide2.jpg" width="1000" height="320" alt="" />
+			          <span>Some Text Goes Here</span></a>
+			          <a href="#"><img src="img/slide3.jpg" width="1000" height="320" alt="" />
+			          <span>Some Text Goes Here</span></a>
+			          <a href="#"><img src="img/slide4.jpg" width="1000" height="320" alt="" />
+			          <span>Some Text Goes Here</span></a> </div>
+				</div>
+			</div>
+			<div id="bar2">
+				<div class="innerBox">
+					<div class="centralContainer">
+					<h4>Restaurant Offers</h4>
+						<div class="restaurantContainers">
+							<img src="img/1.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/2.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/3.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+
+						<div class="restaurantContainers">
+							<img src="img/4.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/5.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/6.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+
+						<div class="restaurantContainers">
+							<img src="img/7.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/8.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/9.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="classForIsolatingFooter">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="bar3">
+				<div class="innerBox">
+					<div class="centralContainer">
+						<h4>Disco Offers</h4>
+						<div class="restaurantContainers">
+							<img src="img/1.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/2.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/3.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+
+						<div class="restaurantContainers">
+							<img src="img/4.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/5.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/6.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+
+						<div class="restaurantContainers">
+							<img src="img/7.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/8.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/9.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="classForIsolatingFooter">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="bar4">
+				<div class="innerBox">
+					<div class="centralContainer">
+						<h4>Pub Offers</h4>
+						<div class="restaurantContainers">
+							<img src="img/1.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/2.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/3.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+
+						<div class="restaurantContainers">
+							<img src="img/4.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/5.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/6.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+
+						<div class="restaurantContainers">
+							<img src="img/7.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/8.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/9.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="classForIsolatingFooter">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="bar5">
+				<div class="innerBox">
+					<div class="centralContainer">
+						<h4>Sunday Brunch</h4>
+						<div class="restaurantContainers">
+							<img src="img/1.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/2.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/3.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+
+						<div class="restaurantContainers">
+							<img src="img/4.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/5.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/6.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+
+						<div class="restaurantContainers">
+							<img src="img/7.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/8.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/9.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="classForIsolatingFooter">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="bar6">
+				<div class="innerBox">
+					<div class="centralContainer">
+						<h4>Yaaron Ka Adda</h4>
+						<div class="restaurantContainers">
+							<img src="img/1.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/2.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/3.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+
+						<div class="restaurantContainers">
+							<img src="img/4.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/5.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/6.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+
+						<div class="restaurantContainers">
+							<img src="img/7.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+							<p></p>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/8.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="restaurantContainers">
+							<img src="img/9.jpg">
+							<center><h4>Shyam Swad Restaurant</h4></center>
+						</div>
+						<div class="classForIsolatingFooter">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="footer">
+			&copy; Foody Buddy ; Created by: Ultramount Solutions
+		</div>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	
+}
+#navBar ul {
+	height: 40px;
+	background: -webkit-linear-gradient(#eee 20%,#fff 100%);
+	background:-moz-linear-gradient(#eee 20%, #fff 100%);
+	border-radius: 5px 5px 0 0;
+	margin-left: 0px;
+	border-bottom: 2px solid;
+
+}
+#navBar ul li{
+	font-size: 17px;
+    display:inline-block;
+    line-height:1.5;
+    padding:5px 10px;
+}
+#centralContent{
+
+	width: 1020px;
+	margin: 0px auto;
+}
+#middleContent{
+	text-align: center;
+	padding-top: 150px;
+}
